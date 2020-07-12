@@ -1,0 +1,147 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BarberShop</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Raleway:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <link href="./css/main.css" rel="stylesheet" />
+  </head>
+  <body>
+    <section class="hero-section">
+      <div class="container-hero-full hero-full">
+        <!-- саундбар -->
+        <div class="saundbar">
+          <ul class="socials list-link-hero">
+            <span class="decor"></span>
+            <li class="list-link-hero">
+              <a class="link-socials list-link-hero" href="">Instagram</a>
+            </li>
+            <li class="list-link-hero">
+              <a class="link-socials list-link-hero" href="">Youtube</a>
+            </li>
+          </ul>
+        </div>
+        <!-- Секція слайдера -->
+        <div class="section-hero">
+          <!-- Слайдер -->
+          <div class="slider">
+            <div class="slider-item">
+              <img src="./images/img-sllid1.jpg" alt="Первый слайд" />
+            </div>
+            <div class="slider-item">
+              <img src="./images/img-sllid2.jpg" alt="Второй слайд" />
+            </div>
+            <div class="slider-item">
+              <img src="./images/img-sllid3.jpg" alt="Третий слайд" />
+            </div>
+          </div>
+
+          <!-- Вказівник слайду -->
+          <div class="slider-dots">
+            <span class="slider-dots_item" onclick="currentSlide(1)"></span>
+            <span class="slider-dots_item" onclick="currentSlide(2)"></span>
+            <span class="slider-dots_item" onclick="currentSlide(3)"></span>
+          </div>
+
+          <!-- перимикач слайдера -->
+          <div class="button-slayder">
+            <button class="button-end prev" onclick="minusSlide()">
+              Назад
+            </button>
+            <button class="button-up next" onclick="plusSlide()">Вперед</button>
+          </div>
+
+          <!-- Текст над слайдом -->
+          <div class="hero">
+            <h2 class="subtitle-hero">A hair salon for men in Kyiv</h2>
+            <h1 class="title-hero">BarberShop</h1>
+            <p class="text-hero">
+              Мы эксперты в модных мужских стрижках. <br />
+              Работаем быстро, осторожно и совкусом.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Меню сайту -->
+      <!-- <include src="./partials/page-header.html"></include> -->
+    </section>
+
+    <!-- Так добавляются фрагменты в главные HTML-файлы страниц. -->
+    <!-- <include src="./partials/example.html"></include> -->
+    <!-- <include src="./partials/page-header.html"></include> -->
+    <include src="./partials/hero-page.html"></include>
+
+    <include src="./partials/price.html"></include>
+
+    <include src="./partials/master.html"></include>
+
+    <include src="./partials/portfolio.html"></include>
+
+    <include src="./partials/contacts.html"></include>
+    <include src="./partials/footer.html"></include>
+
+    <!-- Скрипт идёт последним в разметке. В нём уже подключен главный SASS-файл. -->
+    <script src="./index.js"></script>
+    <!-- Скрипт для открытия мобильного меню в шапке -->
+    <script>
+      (() => {
+        const menuBtnRef = document.querySelector("[data-menu-button]");
+        const mobileMenuRef = document.querySelector("[data-menu]");
+        menuBtnRef.addEventListener("click", () => {
+          const expanded =
+            menuBtnRef.getAttribute("aria-expanded") === "true" || false;
+          menuBtnRef.classList.toggle("is-open");
+          menuBtnRef.setAttribute("aria-expanded", !expanded);
+          mobileMenuRef.classList.toggle("is-open");
+        });
+      })();
+    </script>
+    <!-- JS Слайдера -->
+    <script>
+      /* Индекс слайда по умолчанию */
+      var slideIndex = 1;
+      showSlides(slideIndex);
+
+      /* Функция увеличивает индекс на 1, показывает следующй слайд*/
+      function plusSlide() {
+        showSlides((slideIndex += 1));
+      }
+
+      /* Функция уменьшяет индекс на 1, показывает предыдущий слайд*/
+      function minusSlide() {
+        showSlides((slideIndex -= 1));
+      }
+
+      /* Устанавливает текущий слайд */
+      function currentSlide(n) {
+        showSlides((slideIndex = n));
+      }
+
+      /* Основная функция слайдера */
+      function showSlides(n) {
+        var i;
+        var slides = document.getElementsByClassName("slider-item");
+        var dots = document.getElementsByClassName("slider-dots_item");
+        if (n > slides.length) {
+          slideIndex = 1;
+        }
+        if (n < 1) {
+          slideIndex = slides.length;
+        }
+        for (i = 0; i < slides.length; i++) {
+          slides[i].style.display = "none";
+        }
+        for (i = 0; i < dots.length; i++) {
+          dots[i].className = dots[i].className.replace(" active", "");
+        }
+        slides[slideIndex - 1].style.display = "block";
+        dots[slideIndex - 1].className += " active";
+      }
+    </script>
+  </body>
+</html>

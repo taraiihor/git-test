@@ -1,0 +1,17 @@
+// Base
+@import './base/normalize';
+
+// Utils
+@import './utils/variables';
+@import './utils/placeholders';
+
+// Components
+@import './hero-page';
+
+@import './components/price';
+
+@import './master';
+@import './portfolio';
+
+@import './components/contacts';
+@import './components/footer';

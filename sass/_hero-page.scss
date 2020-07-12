@@ -1,0 +1,367 @@
+.hero-section {
+  position: relative;
+  @media screen and (max-width: 767px) {
+    max-width: 480px;
+    background-size: cover;
+    background-image: linear-gradient(
+        rgba(25, 28, 38, 0.2),
+        rgba(25, 28, 38, 0.2)
+      ),
+      url(../images/slider3-480.jpg);
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+.hero-full {
+  position: relative;
+  display: flex;
+}
+
+.saundbar {
+  display: flex;
+  width: 90px;
+  margin-right: 30px;
+  flex-direction: column-reverse;
+
+  @media screen and (max-width: 767px) {
+    display: none;
+  }
+
+  @media screen and (min-width: 1200px) {
+    width: 70px;
+  }
+
+  .socials {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+
+    transform: rotate(-90deg) translateX(40%);
+
+    .decor::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 1px;
+      margin-left: 40px;
+      background: $primery-color;
+    }
+  }
+
+  .link-socials {
+    display: inline-flex;
+    margin-left: 40px;
+
+    padding-top: 8px;
+    padding-bottom: 8px;
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 11px;
+    line-height: 15px;
+    /* identical to box height */
+
+    letter-spacing: 0.2em;
+
+    color: $primery-color;
+
+    &:focus,
+    &:hover {
+      font-family: Open Sans;
+      font-style: normal;
+      font-weight: 600;
+      font-size: 11px;
+      line-height: 15px;
+      /* identical to box height */
+
+      letter-spacing: 0.2em;
+
+      color: $accept-color;
+    }
+  }
+}
+
+.list-link-hero {
+  text-decoration: none;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.hero {
+  padding-top: 290px;
+  padding-bottom: 180px;
+
+  @media screen and (min-width: 768px) {
+    position: absolute;
+    z-index: 5;
+    top: 0;
+    padding-top: 272px;
+    padding-left: 120px;
+  }
+
+  @media screen and (min-width: 1200px) {
+    padding-top: 272px;
+
+    padding-left: 100px;
+  }
+  .subtitle-hero {
+    display: inline-flex;
+    align-items: center;
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 11px;
+    line-height: 15px;
+    /* identical to box height */
+
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+
+    margin: 0;
+    margin-bottom: 20px;
+
+    color: $secondary-dark-color;
+
+    &::before {
+      content: '';
+      width: 60px;
+      height: 1px;
+      left: 91px;
+      top: 215px;
+
+      margin-right: 20px;
+
+      background: $secondary-dark-color;
+    }
+  }
+
+  .title-hero {
+    font-family: Raleway;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 48px;
+    line-height: 56px;
+    letter-spacing: 0.05em;
+
+    margin: 0;
+    margin-bottom: 20px;
+
+    color: $white-color;
+
+    @media screen and (min-width: 1200px) {
+      font-size: 72px;
+      line-height: 85px;
+      /* identical to box height */
+
+      letter-spacing: 0.05em;
+    }
+  }
+
+  .text-hero {
+    margin: 0;
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 26px;
+    /* or 162% */
+
+    letter-spacing: 0.02em;
+
+    color: $primery-dark-color;
+
+    @media screen and (min-width: 1200px) {
+      font-size: 18px;
+      line-height: 30px;
+      /* or 167% */
+
+      letter-spacing: 0.02em;
+    }
+  }
+}
+
+.section-hero {
+  @media screen and (min-width: 768px) {
+    position: relative;
+    width: 100%;
+    height: 680px;
+  }
+}
+
+// Слайдер
+/* Собственно сам слайдер */
+.slider {
+  position: absolute;
+  right: 0;
+
+  @media screen and (max-width: 767px) {
+    display: none;
+  }
+
+  @media screen and (min-width: 768px) {
+    width: 100%;
+  }
+
+  @media screen and (min-width: 1200px) {
+    width: 100%;
+  }
+}
+/* Картинка мастабируется по отношению к родительскому элементу */
+.slider .slider-item img {
+  object-fit: cover;
+  height: 100%;
+}
+
+/* Кружочки */
+.slider-dots {
+  position: absolute;
+  z-index: 80;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  right: 39px;
+  top: 325px;
+  @media screen and (max-width: 767px) {
+    display: none;
+  }
+
+  @media screen and (min-width: 1200px) {
+    right: 15px;
+  }
+}
+.slider-dots_item {
+  cursor: pointer;
+  width: 8px;
+  height: 2px;
+  border: none;
+  text-align: right;
+  background: $primery-dark-color;
+
+  margin-top: 12px;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+.active,
+.slider-dots_item:hover {
+  width: 18px;
+  height: 2px;
+
+  background: $white-color;
+}
+/* Анимация слайдов */
+.slider .slider-item {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+@-webkit-keyframes fade {
+  from {
+    opacity: 0.4;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes fade {
+  from {
+    opacity: 0.4;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+// Кнопки слайдеру
+.button-slayder {
+  position: absolute;
+  z-index: 60;
+  right: 39px;
+  bottom: 40px;
+
+  @media screen and (max-width: 767px) {
+    display: none;
+  }
+
+  @media screen and (min-width: 1200px) {
+    right: 15px;
+    bottom: 40px;
+  }
+
+  .button-end {
+    position: relative;
+    border: none;
+    border-bottom: 1px solid currentColor;
+    background-color: transparent;
+    width: 60px;
+
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 11px;
+    line-height: 15px;
+    text-align: left;
+
+    /* identical to box height */
+
+    letter-spacing: 0.1em;
+
+    padding: 8px 0px;
+
+    color: $secondary-dark-color;
+
+    &:focus,
+    &:hover {
+      font-family: Open Sans;
+      font-style: normal;
+      font-weight: 600;
+      font-size: 11px;
+      line-height: 15px;
+      /* identical to box height */
+
+      letter-spacing: 0.1em;
+
+      color: $white-color;
+    }
+  }
+
+  .button-up {
+    position: relative;
+    border: none;
+    border-bottom: 1px solid currentColor;
+
+    background-color: transparent;
+    margin-left: 26px;
+    width: 60px;
+
+    padding: 8px 0;
+
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 11px;
+    line-height: 15px;
+    text-align: right;
+
+    /* identical to box height */
+
+    letter-spacing: 0.1em;
+
+    color: $secondary-dark-color;
+
+    &:focus,
+    &:hover {
+      font-family: Open Sans;
+      font-style: normal;
+      font-weight: 600;
+      font-size: 11px;
+      line-height: 15px;
+      /* identical to box height */
+
+      letter-spacing: 0.1em;
+
+      color: $section-bgc;
+    }
+  }
+}
